@@ -35,3 +35,15 @@ password : admin123
 Pimpinan
 email    : pimpinan@bank.test
 password : admin123
+
+## Dokumentasi Tambahan
+
+# Postman Collection
+File Postman tersedia di root project backend:
+mini-bank.json
+
+Import file tersebut ke Postman untuk mencoba seluruh API.
+
+# Jawaban Soal Bonus
+Dokumentasi jawaban soal tambahan tersedia di Google Docs:
+https://docs.google.com/document/d/11ne7MY1uZJDhoVyyr-3iJQqrbij31Lu4B39JyySdDfI/edit?usp=sharing
