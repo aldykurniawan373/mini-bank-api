@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -57,3 +58,54 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+=======
+# Mini Bank Simpan-Pinjam
+
+## Backend Setup (Laravel)
+
+cd app-mini-bank-be
+composer install
+cp .env.example .env
+php artisan key:generate
+
+# edit .env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=mini_bank
+DB_USERNAME=root
+DB_PASSWORD=
+QUEUE_CONNECTION=database
+
+php artisan migrate
+php artisan db:seed
+php artisan storage:link
+php artisan serve
+
+## Queue Worker (WAJIB)
+
+cd app-mini-bank-be
+php artisan queue:work
+
+## Akun Dummy
+
+Admin (Teller)
+email    : admin@bank.test
+password : admin123
+
+Pimpinan
+email    : pimpinan@bank.test
+password : admin123
+
+## Dokumentasi Tambahan
+
+# Postman Collection
+File Postman tersedia di root project backend:
+mini-bank.json
+
+Import file tersebut ke Postman untuk mencoba seluruh API.
+
+# Jawaban Soal Bonus
+Dokumentasi jawaban soal tambahan tersedia di Google Docs:
+https://docs.google.com/document/d/11ne7MY1uZJDhoVyyr-3iJQqrbij31Lu4B39JyySdDfI/edit?usp=sharing
+>>>>>>> fdbc9a4fa73312c44c4e12f5499e06b12404bef7
