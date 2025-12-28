@@ -1,0 +1,67 @@
+version: '3.8'
+services:
+
+  #PHP Service
+  app-simata:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: simata
+    container_name: app-simata
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    ports:
+      - "10010:9000"
+    volumes:
+      - .:/var/www
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - simata-network
+
+  #Nginx Service
+  webserver-simata:
+    image: nginx
+    container_name: webserver-simata
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "20010:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx/laravel/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - simata-network
+
+  #MySQL Service
+  db-simata:
+    image: mysql
+    container_name: db-simata
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "30010:3306"
+    environment:
+      MYSQL_DATABASE: db_simata
+      MYSQL_USER: simata
+      MYSQL_PASSWORD: Rahasia21
+      MYSQL_ROOT_PASSWORD: Rahasia2122
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - simata-network
+
+#Docker Networks
+networks:
+  simata-network:
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
